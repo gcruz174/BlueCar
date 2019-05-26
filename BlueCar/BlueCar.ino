@@ -1,7 +1,7 @@
 /*
-   Creado por Ginés Cruz // 21-05-2019 ver.1
-   Código original por Vasilakis Michalis
-   Proyecto: Coche con Control Remoto vía Bluetooth
+   Created by Ginés Cruz 26-05-2019
+   Original code by Vasilakis Michalis
+   Found at https://www.instructables.com/id/Arduino-Bluetooth-RC-Car-Android-Controlled/
 */
 #define BAUDRATE 9600
 
