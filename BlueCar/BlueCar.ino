@@ -7,10 +7,10 @@
 
 // --- Pins ---
 // Motor
-const int pinMotorA1 = 8;
-const int pinMotorA2 = 9;
-const int pinMotorB1 = 10;
-const int pinMotorB2 = 11;
+const int pinMotorA1 = 11;
+const int pinMotorA2 = 10;
+const int pinMotorB1 = 9;
+const int pinMotorB2 = 8;
 const int pinMotorENA = 3;
 const int pinMotorENB = 4;
 
@@ -18,10 +18,10 @@ const int pinMotorENB = 4;
 const int pinLED = 12;
 
 // Buzzer
-const int pinBuzzer = 3;
+const int pinBuzzer = 7;
 
 // Bluetooth State Pin
-const int pinBtState = 2;
+const int pinBtState = 6;
 
 // --- Variables ---
 // Delay-less delay
@@ -37,7 +37,8 @@ bool blinkerOn = false;
 bool buzzer = false;
 
 // Correction factor for the second motor
-const int corrFactor = 20;
+// Needs to be tweaked manually.
+const int corrFactor = 0;
 
 void setup() {
   // Set up pins
@@ -115,49 +116,49 @@ void handleDirection(char d)
     // Forward
     case 'W':
       setDriverInput(1, 0, 1, 0);
-      setPWM(255, 255);
+      setPWM(spd, spd);
       break;
       
     // Forward Left
     case 'Q':
       setDriverInput(1, 0, 1, 0);
-      setPWM(255, 200);
+      setPWM(spd, spd - 50);
       break;
       
     // Forward Right
     case 'E':
       setDriverInput(1, 0, 1, 0);
-      setPWM(200, 255);
+      setPWM(spd - 50, spd);
       break;
       
     // Back
     case 'X':
       setDriverInput(0, 1, 0, 1);
-      setPWM(255, 255);
+      setPWM(spd, spd);
       break;
       
     // Back Left
     case 'Z':
       setDriverInput(0, 1, 0, 1);
-      setPWM(200, 255);
+      setPWM(spd - 50, spd);
       break;
       
     // Back Right
     case 'C':
       setDriverInput(0, 1, 0, 1);
-      setPWM(255, 200);
+      setPWM(spd, spd - 50);
       break;
       
     // Left
     case 'A':
       setDriverInput(0, 0, 1, 0);
-      setPWM(0, 255);
+      setPWM(0, spd);
       break;
       
     // Right
     case 'D':
       setDriverInput(1, 0, 0, 0);
-      setPWM(255, 0);
+      setPWM(spd, 0);
       break;
       
     // Stop
@@ -174,7 +175,7 @@ void handleSpeed(char s)
   switch(s)
   {
     case '1':
-      spd = 50;
+      spd = 60;
       break;
     case '2':
       spd = 100;
